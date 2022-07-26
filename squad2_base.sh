@@ -1,0 +1,25 @@
+python -m run_squad_v2 \
+  --albert_config_file=./albert_base_v2/albert_config.json \
+  --output_dir=./output_base_v2 \
+  --train_file=./squad_v2/train-v2.0.json \
+  --predict_file=./squad_v2/dev-v2.0.json \
+  --train_feature_file="./squad_v2/train.tfrecord" \
+  --predict_feature_file="./squad_v2/dev.tfrecord" \
+  --predict_feature_left_file="./squad_v2/pred_left_file.pkl" \
+  --init_checkpoint=./albert_base_v2/model.ckpt-best \
+  --vocab_file=./albert_base_v2/30k-clean.vocab \
+  --do_lower_case \
+  --max_seq_length=384 \
+  --doc_stride=128 \
+  --max_query_length=64 \
+  --do_train \
+  --do_predict \
+  --train_batch_size=16 \
+  --predict_batch_size=1 \
+  --learning_rate=3e-5 \
+  --num_train_epochs=2.0 \
+  --warmup_proportion=.1 \
+  --save_checkpoints_steps=500 \
+  --n_best_size=20 \
+  --max_answer_length=30
+
